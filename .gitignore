@@ -1,0 +1,6 @@
+# .NET Core
+**/[Bb]in/
+**/[Oo]bj/
+
+# Environment/configs
+appsettings.Development.json
