@@ -4,3 +4,9 @@
 
 # Environment/configs
 appsettings.Development.json
+.config/
+
+# Sqlite
+*.db
+*.db-shm
+*.db-wal
