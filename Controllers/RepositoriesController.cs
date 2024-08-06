@@ -42,4 +42,15 @@ public class RepositoriesController : Controller
 		}
 		return View(repository);
 	}
+
+	// GET: /Repositories/Details/id
+	public IActionResult Details(int id)
+	{
+		Repository? repository = _context.Repositories.FirstOrDefault(repository => repository.Id == id);
+		if (repository == null)
+		{
+			return NotFound();
+		}
+		return View(repository);
+	}
 }
