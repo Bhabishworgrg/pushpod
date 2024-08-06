@@ -1,22 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
 using pushpod.Data;
 using pushpod.Models;
+using pushpod.Services;
 
 namespace pushpod.Controllers;
 
 public class RepositoriesController : Controller
 {
 	private readonly PushPodDbContext _context;
+	private readonly GitService _gitService;
 
-	public RepositoriesController(PushPodDbContext context)
+	public RepositoriesController(PushPodDbContext context, GitService gitService)
 	{
 		_context = context;
+		_gitService = gitService;
 	}
 
 	// GET: /Repositories
 	public IActionResult Index()
 	{
-		return View(_context.Repositories.ToList());
+		List<Repository> repositories = _context.Repositories.ToList();
+		return View(repositories);
 	}
 
 	// GET: /Repositories/Create
@@ -33,6 +37,7 @@ public class RepositoriesController : Controller
 		{
 			_context.Repositories.Add(repository);
 			_context.SaveChanges();
+			_gitService.CreateRepository(repository.Name);
 			return RedirectToAction(nameof(Index));
 		}
 		return View(repository);
