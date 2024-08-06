@@ -7,6 +7,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<pushpod.Data.PushPodDbContext>(options =>
 	options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<pushpod.Services.GitService>();
+
 WebApplication app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
