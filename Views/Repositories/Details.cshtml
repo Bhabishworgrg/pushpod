@@ -1,0 +1,23 @@
+@model pushpod.Models.Repository
+
+@{
+	ViewData["Title"] = @Html.DisplayFor(model => model.Name);
+}
+
+<h1>
+	@Html.DisplayFor(model => model.Name)
+</h1>
+
+<b>
+	@Html.DisplayNameFor(model => model.Description)
+</b>
+<p>
+	@Html.DisplayFor(model => model.Description)
+</p>
+
+<b>
+	@Html.DisplayNameFor(model => model.CreatedAt)
+</b>
+<p>
+	@Html.DisplayFor(model => model.CreatedAt)
+</p>
