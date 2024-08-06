@@ -29,7 +29,9 @@ ViewData["Title"] = "Repositories";
 		@foreach (var repository in Model) {
 		<tr>
 			<td>
-				<a asp-action="">@Html.DisplayFor(modelItem => repository.Name)</a>
+				<a asp-action="Details" asp-route-id="@(repository.Id)">
+					@Html.DisplayFor(modelItem => repository.Name)
+				</a>
 			</td>
 			<td>
 				@Html.DisplayFor(modelItem => repository.Description)
