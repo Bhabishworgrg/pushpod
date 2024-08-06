@@ -8,7 +8,7 @@ ViewData["Title"] = "Repositories";
 
 <p>
 	<input type="text" id="search" placeholder="Search for repositories..">
-	<button>New</button>
+	<a asp-action="Create" class="btn btn-primary">New</a>
 </p>
 
 <table class="table">
@@ -26,16 +26,16 @@ ViewData["Title"] = "Repositories";
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (var item in Model) {
+		@foreach (var repository in Model) {
 		<tr>
 			<td>
-				<a>@Html.DisplayFor(modelItem => item.Name)</a>
+				<a asp-action="">@Html.DisplayFor(modelItem => repository.Name)</a>
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.Description)
+				@Html.DisplayFor(modelItem => repository.Description)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.CreatedAt)
+				@Html.DisplayFor(modelItem => repository.CreatedAt)
 			</td>
 		</tr>
 		}
