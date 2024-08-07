@@ -28,4 +28,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Repositories}/{action=Index}/{id?}");
 
+app.MapControllerRoute(
+    name: "git",
+    pattern: "{repositoryName}/{action}");
+
 app.Run();
