@@ -2,22 +2,22 @@ namespace pushpod.Services;
 
 public class GitService
 {
-	private readonly string _repositoryDirectoryPath;
+	public string RepositoryDirectoryPath { get; }
 
 	public GitService(IWebHostEnvironment env)
 	{
-		_repositoryDirectoryPath = Path.Combine(env.ContentRootPath, "Repositories");
-		Directory.CreateDirectory(_repositoryDirectoryPath);
+		RepositoryDirectoryPath = Path.Combine(env.ContentRootPath, "Repositories");
+		Directory.CreateDirectory(RepositoryDirectoryPath);
 	}
 
 	public void CreateRepository(string name)
 	{
-		string repositoryPath = Path.Combine(_repositoryDirectoryPath, name);
+		string repositoryPath = Path.Combine(RepositoryDirectoryPath, name);
 		LibGit2Sharp.Repository.Init(repositoryPath, true);
 	}
 
 	public IEnumerable<string?> GetRepositories()
 	{
-		return Directory.GetDirectories(_repositoryDirectoryPath).Select(Path.GetFileName);
+		return Directory.GetDirectories(RepositoryDirectoryPath).Select(Path.GetFileName);
 	}
 }
